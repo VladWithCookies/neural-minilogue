@@ -143,16 +143,16 @@ class VAE:
   def compile(self, learning_rate = 0.0001):
     optimizer = Adam(learning_rate = learning_rate)
 
-    def calculate_reconstruction_loss(y_target, y_predicted):
+    def reconstruction_loss(y_target, y_predicted):
       return self._calculate_combined_loss(y_target, y_predicted)
 
-    def calculate_kl_loss(y_target, y_predicted):
+    def kl_loss(y_target, y_predicted):
       return self._calculate_kl_loss(y_target, y_predicted)
 
     self.model.compile(
       optimizer = optimizer,
       loss = self._calculate_combined_loss,
-      metrics = [calculate_reconstruction_loss, calculate_kl_loss]
+      metrics = [reconstruction_loss, kl_loss]
     )
 
   def train(self, x_train, batch_size, epochs):
