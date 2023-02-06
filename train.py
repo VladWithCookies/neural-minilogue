@@ -1,7 +1,7 @@
 from sklearn import preprocessing as p
 
 from src.constants import DATA_FILE_PATHS, INPUT_KEYS
-from src.utils import load_training_data
+from src.utils import load_data
 from src.vae import VAE
 
 LEARNING_RATE = 0.0005
@@ -22,6 +22,7 @@ def train(x_train, learning_rate, batch_size, epochs):
   return vae
 
 scaler = p.MinMaxScaler()
-x_train = scaler.fit_transform(load_training_data(DATA_FILE_PATHS, INPUT_KEYS))
+data = load_data(DATA_FILE_PATHS, INPUT_KEYS)
+x_train = scaler.fit_transform(data)
 model = train(x_train, LEARNING_RATE, BATCH_SIZE, EPOCHS)
 model.save("model")
