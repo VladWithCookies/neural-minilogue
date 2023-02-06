@@ -1,6 +1,7 @@
 import json
 
 from flask import Flask
+from flask_cors import CORS
 from sklearn import preprocessing as p
 
 from src.constants import DATA_FILE_PATHS, INPUT_KEYS
@@ -8,6 +9,7 @@ from src.utils import load_data, sample_data, format_data
 from src.vae import VAE
 
 app = Flask(__name__)
+CORS(app)
 
 @app.route('/')
 def index():

@@ -34,5 +34,4 @@ def format_data(data, keys):
     patch = to_patch(array, keys)
     result.append(patch)
 
-  print(result)
   return result

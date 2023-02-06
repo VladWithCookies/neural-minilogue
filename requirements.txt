@@ -15,6 +15,7 @@ charset-normalizer @ file:///home/conda/feedstock_root/build_artifacts/charset-n
 click @ file:///home/conda/feedstock_root/build_artifacts/click_1666798198223/work
 cryptography @ file:///Users/runner/miniforge3/conda-bld/cryptography-split_1672673354240/work
 Flask @ file:///private/var/folders/nz/j6p8yfhx1mv_0grj5xl4650h0000gp/T/abs_9ctftfb254/croot/flask_1671217361609/work
+Flask-Cors @ file:///tmp/build/80754af9/flask-cors_1609957731919/work
 flatbuffers @ file:///home/conda/feedstock_root/build_artifacts/python-flatbuffers_1674415895114/work
 frozenlist @ file:///Users/runner/miniforge3/conda-bld/frozenlist_1667935502123/work
 gast @ file:///home/conda/feedstock_root/build_artifacts/gast_1596839682936/work
