@@ -5,7 +5,7 @@ import tensorflow as tf
 from tensorflow.keras import Model
 from tensorflow.keras.layers import Input, Dense, Lambda
 from tensorflow.keras import backend as K
-from tensorflow.keras.optimizers import Adam
+from tensorflow.keras.optimizers.legacy import Adam
 
 tf.compat.v1.disable_eager_execution()
 
@@ -143,10 +143,16 @@ class VAE:
   def compile(self, learning_rate = 0.0001):
     optimizer = Adam(learning_rate = learning_rate)
 
+    def calculate_reconstruction_loss(y_target, y_predicted):
+      return self._calculate_combined_loss(y_target, y_predicted)
+
+    def calculate_kl_loss(y_target, y_predicted):
+      return self._calculate_kl_loss(y_target, y_predicted)
+
     self.model.compile(
       optimizer = optimizer,
       loss = self._calculate_combined_loss,
-      metrics = [self._calculate_reconstruction_loss, self._calculate_kl_loss]
+      metrics = [calculate_reconstruction_loss, calculate_kl_loss]
     )
 
   def train(self, x_train, batch_size, epochs):
