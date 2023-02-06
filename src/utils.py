@@ -1,11 +1,8 @@
 import json
 import numpy as np
 
-from sklearn import preprocessing as p
-
 def load_training_data(paths, keys):
   result = []
-  scaler = p.MinMaxScaler()
 
   for path in paths:
     with open(path) as file:
@@ -15,4 +12,7 @@ def load_training_data(paths, keys):
         values = dict((key, item[key]) for key in keys if key in item).values()
         result.append(list(values))
 
-  return np.array(scaler.fit_transform(result))
+  return np.array(result)
+
+def sample_data(data, count):
+  return data[np.random.choice(data.shape[0], count, replace = False), :]

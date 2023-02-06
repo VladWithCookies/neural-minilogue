@@ -36,7 +36,7 @@ class VAE:
     weights_path = os.path.join(folder, 'weights.h5')
     vae.load_weights(weights_path)
 
-    return
+    return vae
 
   def _calculate_combined_loss(self, y_target, y_predicted):
     reconstruction_loss = self._calculate_reconstruction_loss(y_target, y_predicted)
